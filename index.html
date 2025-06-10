@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegando a Era Digital - Gerações Alfa e Beta</title>
+    <style>
+        :root {
+            --cor-primaria: #2c3e50;
+            --cor-secundaria: #3498db;
+            --fonte: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            font-family: var(--fonte);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: var(--cor-primaria);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .infografico-interativo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .modulo {
+            padding: 20px;
+            border-left: 5px solid var(--cor-secundaria);
+            transition: transform 0.3s ease;
+        }
+
+        .modulo:hover {
+            transform: translateY(-5px);
+        }
+
+        canvas {
+            max-width: 100%;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .infografico-interativo {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gerações Digitais: Alfa e Beta na Era dos Ecrãs</h1>
+            <p>Uma exploração interativa dos desafios e oportunidades digitais</p>
+        </header>
+
+        <section class="infografico-interativo">
+            <div class="modulo">
+                <h2>🧠 Neurodesenvolvimento e Ecrãs</h2>
+                <canvas id="graficoCognitivo"></canvas>
+                <p>Impacto no córtex pré-frontal e desenvolvimento emocional [1][3]</p>
+            </div>
+
+            <div class="modulo">
+                <h2>🛡️ Segurança Digital</h2>
+                <div id="simuladorPrivacidade">
+                    <button onclick="simularAtaque()">Testar Configurações</button>
+                    <p id="statusSeguranca"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="modulo">
+            <h2>📚 Ecrãs na Educação</h2>
+            <div class="slider">
+                <img src="grafico-educacao.png" alt="Uso de tecnologias em salas de aula portuguesas">
+                <blockquote>"A tecnologia deve ser ferramenta, não fim" - Relatório TELOS 127 [4]</blockquote>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Simulação de dados cognitivos
+        const ctx = document.getElementById('graficoCognitivo').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Atenção', 'Memória', 'Sono', 'Habilidades Sociais', 'Resolução de Problemas'],
+                datasets: [{
+                    label: 'Impacto Digital',
+                    data: [85, 78, 92, 65, 88],
+                    backgroundColor: 'rgba(52, 152, 219, 0.5)'
+                }]
+            }
+        });
+
+        function simularAtaque() {
+            const resultados = ["Proteção Ativa: 98% seguro", "Configuração Média: 65% seguro", "Risco Alto: 30% seguro"];
+            document.getElementById('statusSeguranca').textContent = 
+                resultados[Math.floor(Math.random()*3)] + " [2][5]";
+        }
+    </script>
+</body>
+</html>
