@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerações Alfa e Beta: Navegando a Era Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-digital-tachograph"></i>
+                <span>Gerações Digitais</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" data-section="home">Início</a></li>
+                <li><a href="#effects" data-section="effects">Efeitos dos Ecrãs</a></li>
+                <li><a href="#safety" data-section="safety">Ambiente Seguro</a></li>
+                <li><a href="#school" data-section="school">Ecrãs na Escola</a></li>
+                <li><a href="#teens" data-section="teens">Tecnoadolescentes</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="container">
+                <h1>Gerações Alfa e Beta: Navegando a Era Digital</h1>
+                <p class="hero-subtitle">Uma abordagem equilibrada para compreender o impacto da tecnologia nas novas gerações</p>
+                <div class="hero-intro">
+                    <p>Vivemos numa era de transformação digital sem precedentes. As gerações mais jovens crescem imersas num ambiente onde o digital e o físico se entrelaçam naturalmente. Esta aplicação oferece uma perspectiva baseada em evidências científicas para compreender, orientar e educar sobre o uso responsável da tecnologia.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="sections-grid">
+                <div class="section-card" data-section="effects">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Efeitos dos Ecrãs na Infância</h3>
+                    <p>Descubra como os ecrãs afectam o desenvolvimento cerebral e aprenda as recomendações científicas sobre tempo de exposição.</p>
+                    <div class="card-features">
+                        <span><i class="fas fa-chart-line"></i> Timeline interactiva</span>
+                        <span><i class="fas fa-quiz"></i> Quiz educativo</span>
+                    </div>
+                </div>
+
+                <div class="section-card" data-section="safety">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Ambiente Digital Seguro</h3>
+                    <p>Ferramentas práticas para criar um ambiente digital seguro e educativo para menores.</p>
+                    <div class="card-features">
+                        <span><i class="fas fa-tasks"></i> Checklist interactiva</span>
+                        <span><i class="fas fa-cogs"></i> Simulador de controlos</span>
+                    </div>
+                </div>
+
+                <div class="section-card" data-section="school">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Ecrãs na Escola</h3>
+                    <p>Explore como integrar a tecnologia na educação de forma pedagogicamente fundamentada.</p>
+                    <div class="card-features">
+                        <span><i class="fas fa-balance-scale"></i> Comparação pedagógica</span>
+                        <span><i class="fas fa-tools"></i> Ferramentas educativas</span>
+                    </div>
+                </div>
+
+                <div class="section-card" data-section="teens">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Tecnoadolescentes</h3>
+                    <p>Compreenda as características únicas desta geração e como apoiar o seu desenvolvimento digital.</p>
+                    <div class="card-features">
+                        <span><i class="fas fa-chart-pie"></i> Infográficos</span>
+                        <span><i class="fas fa-gamepad"></i> Simulador de vida digital</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Effects Section -->
+    <section id="effects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Efeitos dos Ecrãs na Infância</h2>
+                <p>Compreender o impacto dos ecrãs no desenvolvimento cerebral das crianças</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Recomendações de Tempo de Ecrã</h3>
+                        <canvas id="screenTimeChart" style="height: 300px;"></canvas>
+                    </div>
+                </div>
+
+                <div class="benefits-risks">
+                    <div class="card benefits-card">
+                        <div class="card__body">
+                            <h3><i class="fas fa-thumbs-up"></i> Benefícios</h3>
+                            <ul id="benefits-list"></ul>
+                        </div>
+                    </div>
+
+                    <div class="card risks-card">
+                        <div class="card__body">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Riscos</h3>
+                            <ul id="risks-list"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card quiz-card">
+                    <div class="card__body">
+                        <h3>Quiz: Mitos e Realidades</h3>
+                        <div id="quiz-container">
+                            <div class="quiz-question" id="quiz-question"></div>
+                            <div class="quiz-options" id="quiz-options"></div>
+                            <div class="quiz-result" id="quiz-result"></div>
+                            <button class="btn btn--primary" id="quiz-next">Próxima Pergunta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Section -->
+    <section id="safety" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ambiente Digital Seguro para Menores</h2>
+                <p>Ferramentas e estratégias para criar um ambiente digital educativo e protegido</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Checklist de Segurança Digital</h3>
+                        <div id="safety-checklist"></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="safety-progress"></div>
+                        </div>
+                        <p class="progress-text">Progresso: <span id="progress-text">0%</span></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Simulador de Controlos Parentais</h3>
+                        <div class="controls-simulator">
+                            <div class="control-option">
+                                <label>Filtro de Conteúdo:</label>
+                                <select id="content-filter" class="form-control">
+                                    <option>Desactivado</option>
+                                    <option>Básico</option>
+                                    <option>Moderado</option>
+                                    <option>Restritivo</option>
+                                </select>
+                            </div>
+                            <div class="control-option">
+                                <label>Tempo de Utilização:</label>
+                                <input type="range" id="time-limit" min="0" max="8" value="2" class="form-control">
+                                <span id="time-display">2 horas</span>
+                            </div>
+                            <div class="control-preview" id="control-preview"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- School Section -->
+    <section id="school" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ecrãs na Escola</h2>
+                <p>Integração pedagógica da tecnologia no ambiente educativo</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Competências Digitais Necessárias</h3>
+                        <canvas id="competencesChart" style="height: 300px;"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Ferramentas Educativas</h3>
+                        <div class="tools-grid" id="tools-grid"></div>
+                    </div>
+                </div>
+
+                <div class="card comparison-card">
+                    <div class="card__body">
+                        <h3>Pedagogia Tradicional vs Digital</h3>
+                        <div class="comparison-toggle">
+                            <button class="btn btn--secondary" id="traditional-btn">Tradicional</button>
+                            <button class="btn btn--primary" id="digital-btn">Digital</button>
+                        </div>
+                        <div class="comparison-content" id="comparison-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teens Section -->
+    <section id="teens" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tecnoadolescentes</h2>
+                <p>Características e necessidades da geração que cresceu na era digital</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Características dos Tecnoadolescentes</h3>
+                        <div class="characteristics-grid" id="characteristics-grid"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Vida Online vs Offline</h3>
+                        <div class="life-simulator">
+                            <div class="time-slider">
+                                <label>Tempo Online (horas/dia):</label>
+                                <input type="range" id="online-time" min="0" max="16" value="6" class="form-control">
+                                <span id="online-display">6 horas</span>
+                            </div>
+                            <div class="balance-visualization" id="balance-viz"></div>
+                            <div class="recommendations" id="balance-recommendations"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Guia para Acompanhamento Familiar</h3>
+                        <div class="guide-steps">
+                            <div class="step">
+                                <i class="fas fa-comments"></i>
+                                <h4>Diálogo Aberto</h4>
+                                <p>Manter conversas regulares sobre experiências digitais</p>
+                            </div>
+                            <div class="step">
+                                <i class="fas fa-eye"></i>
+                                <h4>Observação Atenta</h4>
+                                <p>Estar atento a mudanças de comportamento</p>
+                            </div>
+                            <div class="step">
+                                <i class="fas fa-handshake"></i>
+                                <h4>Parceria</h4>
+                                <p>Aprender juntos sobre novas tecnologias</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
