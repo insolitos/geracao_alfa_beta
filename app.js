@@ -77,8 +77,6 @@ const appData = {
 };
 
 // Global variables
-let screenTimeChartInstance = null;
-let competencesChartInstance = null;
 let currentSection = 'home';
 let currentQuizQuestion = 0;
 let quizScore = 0;
@@ -337,21 +335,19 @@ function initializeScreenTimeChart() {
   const ctx = document.getElementById('screenTimeChart');
   if (!ctx) return;
 
-  // Destruir instância anterior, se existir
-  if (screenTimeChartInstance) {
-    screenTimeChartInstance.destroy();
-  }
+  const ages = Object.keys(appData.screenTimeRecommendations);
+  const times = Object.values(appData.screenTimeRecommendations).map(time => {
+    const match = time.match(/(\d+)/);
+    return match ? parseInt(match[1]) : 0;
+  });
 
-  screenTimeChartInstance = new Chart(ctx, { // Atribuir à variável global
+  new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: Object.keys(appData.screenTimeRecommendations),
+      labels: ages,
       datasets: [{
         label: 'Tempo Recomendado (horas)',
-        data: Object.values(appData.screenTimeRecommendations).map(time => {
-          const match = time.match(/(\d+)/);
-          return match ? parseInt(match[1]) : 0;
-        }),
+        data: times,
         backgroundColor: ['#1FB8CD', '#FFC185', '#B4413C', '#5D878F'],
         borderColor: ['#1FB8CD', '#FFC185', '#B4413C', '#5D878F'],
         borderWidth: 2,
@@ -362,6 +358,7 @@ function initializeScreenTimeChart() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      animation: false, // ANIMAÇÃO DESATIVADA
       interaction: {
         intersect: false,
         mode: 'index'
@@ -419,11 +416,8 @@ function initializeScreenTimeChart() {
             display: false
           }
         }
-      },
-      animation: {
-        duration: 1000,
-        easing: 'easeOutQuart'
       }
+      // O bloco animation: { duration: 1000, easing: 'easeOutQuart' } foi removido e substituído por animation: false
     }
   });
 }
@@ -440,12 +434,7 @@ function initializeCompetencesChart() {
   const ctx = document.getElementById('competencesChart');
   if (!ctx) return;
 
-  // Destruir instância anterior, se existir
-  if (competencesChartInstance) {
-    competencesChartInstance.destroy();
-  }
-
-  competencesChartInstance = new Chart(ctx, { // Atribuir à variável global
+  new Chart(ctx, {
     type: 'doughnut',
     data: {
       labels: appData.digitalCompetences,
@@ -461,6 +450,7 @@ function initializeCompetencesChart() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      animation: false, // ANIMAÇÃO DESATIVADA
       plugins: {
         title: {
           display: true,
@@ -491,11 +481,8 @@ function initializeCompetencesChart() {
             }
           }
         }
-      },
-      animation: {
-        animateRotate: true,
-        duration: 1500
       }
+      // O bloco animation: { animateRotate: true, duration: 1500 } foi removido e substituído por animation: false
     }
   });
 }
