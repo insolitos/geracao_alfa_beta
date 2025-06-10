@@ -77,6 +77,8 @@ const appData = {
 };
 
 // Global variables
+let screenTimeChartInstance = null;
+let competencesChartInstance = null;
 let currentSection = 'home';
 let currentQuizQuestion = 0;
 let quizScore = 0;
@@ -335,19 +337,21 @@ function initializeScreenTimeChart() {
   const ctx = document.getElementById('screenTimeChart');
   if (!ctx) return;
 
-  const ages = Object.keys(appData.screenTimeRecommendations);
-  const times = Object.values(appData.screenTimeRecommendations).map(time => {
-    const match = time.match(/(\d+)/);
-    return match ? parseInt(match[1]) : 0;
-  });
+  // Destruir instância anterior, se existir
+  if (screenTimeChartInstance) {
+    screenTimeChartInstance.destroy();
+  }
 
-  new Chart(ctx, {
+  screenTimeChartInstance = new Chart(ctx, { // Atribuir à variável global
     type: 'bar',
     data: {
-      labels: ages,
+      labels: Object.keys(appData.screenTimeRecommendations),
       datasets: [{
         label: 'Tempo Recomendado (horas)',
-        data: times,
+        data: Object.values(appData.screenTimeRecommendations).map(time => {
+          const match = time.match(/(\d+)/);
+          return match ? parseInt(match[1]) : 0;
+        }),
         backgroundColor: ['#1FB8CD', '#FFC185', '#B4413C', '#5D878F'],
         borderColor: ['#1FB8CD', '#FFC185', '#B4413C', '#5D878F'],
         borderWidth: 2,
@@ -436,7 +440,12 @@ function initializeCompetencesChart() {
   const ctx = document.getElementById('competencesChart');
   if (!ctx) return;
 
-  new Chart(ctx, {
+  // Destruir instância anterior, se existir
+  if (competencesChartInstance) {
+    competencesChartInstance.destroy();
+  }
+
+  competencesChartInstance = new Chart(ctx, { // Atribuir à variável global
     type: 'doughnut',
     data: {
       labels: appData.digitalCompetences,
