@@ -89,6 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeApp() {
+  // document.title = "TESTING: initializeApp was called"; // Test line removed
+
   setupNavigation();
   setupThemeToggle();
   setupBackToTop();
@@ -99,6 +101,7 @@ function initializeApp() {
 
 // Navigation
 function setupNavigation() {
+  // console.log("Running setupNavigation"); // Debug
   const navLinks = document.querySelectorAll('.nav-menu a');
   const sectionCards = document.querySelectorAll('.section-card');
 
@@ -159,6 +162,8 @@ function updateActiveNavLink(activeLink = null) {
 
 // Theme Toggle
 function setupThemeToggle() {
+  // console.log("Running setupThemeToggle - currently bypassed"); // Debug
+  // return; // Bypassing this function for now // Restoring function
   const themeToggle = document.getElementById('theme-toggle');
   const icon = themeToggle.querySelector('i');
   
@@ -190,6 +195,8 @@ function setupThemeToggle() {
 
 // Back to Top Button
 function setupBackToTop() {
+  // console.log("Running setupBackToTop - currently bypassed"); // Debug
+  // return; // Bypassing this function for now // Restoring function
   const backToTopBtn = document.getElementById('back-to-top');
   
   window.addEventListener('scroll', () => {
@@ -207,6 +214,11 @@ function setupBackToTop() {
 
 // Populate Content
 function populateContent() {
+  // const heroTitle = document.querySelector('#home .hero h1'); // Test removed, this is already correct state
+  // if (heroTitle) {
+  //   heroTitle.textContent = "TESTING: populateContent was called";
+  // }
+
   populateBenefitsAndRisks();  
   populateSafetyChecklist();
   populateSchoolTools();
@@ -312,6 +324,14 @@ function initializeCharts() {
 }
 
 function initializeScreenTimeChart() {
+  if (typeof Chart !== 'function') {
+    console.error("Chart.js is not loaded. Skipping screenTimeChart initialization.");
+    const chartContainer = document.getElementById('screenTimeChart');
+    if (chartContainer) {
+      chartContainer.parentElement.innerHTML = "<p style='color:red; text-align:center;'>Erro ao carregar gráfico de tempo de ecrã.</p>";
+    }
+    return;
+  }
   const ctx = document.getElementById('screenTimeChart');
   if (!ctx) return;
 
@@ -405,6 +425,14 @@ function initializeScreenTimeChart() {
 }
 
 function initializeCompetencesChart() {
+  if (typeof Chart !== 'function') {
+    console.error("Chart.js is not loaded. Skipping competencesChart initialization.");
+    const chartContainer = document.getElementById('competencesChart');
+    if (chartContainer) {
+      chartContainer.parentElement.innerHTML = "<p style='color:red; text-align:center;'>Erro ao carregar gráfico de competências.</p>";
+    }
+    return;
+  }
   const ctx = document.getElementById('competencesChart');
   if (!ctx) return;
 
